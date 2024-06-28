@@ -1,2 +1,3 @@
 #' @export l
-l <- \(.) base::length(.)
+
+l <- \(x) base::length(x)

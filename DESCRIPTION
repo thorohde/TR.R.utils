@@ -1,0 +1,12 @@
+Package: R.utils
+Type: Package
+Title: A collection of R utility functions
+Version: 0.1.0
+Author: Thomas Rohde
+Maintainer: Thomas Rohde <thomasrohde@protonmail.com>
+Description: A collection of R utility functions.
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    MASS

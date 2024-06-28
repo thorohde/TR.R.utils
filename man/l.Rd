@@ -7,6 +7,3 @@ l(x)
 \description{
 Calls base::length.
 }
-\examples{
-l(x)
-}

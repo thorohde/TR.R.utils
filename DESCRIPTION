@@ -1,4 +1,4 @@
-Package: R.utils
+Package: TR.R.utils
 Type: Package
 Title: A collection of R utility functions
 Version: 0.1.0

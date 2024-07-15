@@ -1,5 +1,7 @@
 #' @export plotsaver
 
+## ---- downloader function ----
+
 downloader <- \(.url, .file, .method = "curl", verbose = T) {
 
   message(ifelse(file.exists(.file),

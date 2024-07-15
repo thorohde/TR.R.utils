@@ -1,5 +1,7 @@
 #' @export import_depmap
 
+## ---- import_depmap function ----
+
 import_depmap <- \(file, impute = F, verbose = T) {
 
   object <- as.matrix(fread(file), rownames = 1)

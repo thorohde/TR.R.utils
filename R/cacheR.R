@@ -1,5 +1,7 @@
 #' @export cacheR
 
+## ---- cacheR function ----
+
 cacheR <- \(.,
             fname,
             dir = file.path(getwd(), "cache"),

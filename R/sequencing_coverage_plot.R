@@ -11,17 +11,18 @@ sequencing_coverage_plot <- \(read_count_dt,
                               coverage_lines = NA) {
 
   x <- list(data = data.table::data.table(screen = columns),
-            n_constructs = nrow(read_file))
+            n_constructs = base::nrow(read_count_dt))
 
   if (!base::missing(info_file)) {
     x$data <- merge(x$data, info_file, by = "screen", all.x = T)
   }
 
-  x$data <- copy(x$data[
-    , abs_read_count := sapply(columns, \(.s) {read_file[, sum(get(.s))]})])
+  x$data$abs_read_count <- base::sapply(columns,
+                                        \(.s) {read_count_dt[, sum(get(.s))]})
 
-  x$plot <- x$data %>%
-    ggplot2::ggplot(aes(abs_read_count, screen)) +
+  x$plot <- ggplot2::ggplot(
+    data = x$data,
+    mapping = ggplot2::aes(x$data$abs_read_count, x$data$screen)) +
     ggplot2::labs(x = "Reads per sample",
                   y = "Screen",
                   title = "Absolute read counts") +
@@ -31,8 +32,8 @@ sequencing_coverage_plot <- \(read_count_dt,
     x$plot <- x$plot +
       ggplot2::geom_vline(xintercept = x$n_constructs * coverage_lines,
                           color = "red", linetype = "dashed") +
-      labs(caption = base::paste0("The red line represents a ",
-                            coverage_lines, "x coverage."))
+      ggplot2::labs(caption = base::paste0("The red line represents a ",
+                                           coverage_lines, "x coverage."))
   }
   x
 }

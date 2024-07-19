@@ -10,6 +10,11 @@ sequencing_coverage_plot <- \(read_count_dt,
                               info_file,
                               coverage_lines = NA) {
 
+  #print(str(read_count_dt))
+
+  #print(columns)
+
+
   x <- list(data = data.table::data.table(screen = columns),
             n_constructs = base::nrow(read_count_dt))
 

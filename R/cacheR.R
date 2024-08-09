@@ -9,7 +9,9 @@ cacheR <- \(.,
             write_cache = T,
             verbose = F) {
 
-  mkdir(dir)
+  if (!base::dir.exists(dir)) {
+    base::dir.create(dir, recursive = T, showWarnings = F)
+  }
 
   f <- fp(dir, base::paste0(fname, ".rds"))
 

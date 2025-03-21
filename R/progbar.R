@@ -1,3 +1,6 @@
+#' @importFrom progress progress_bar
+#' @export progbar
+
 progbar <- \(total = 100, show_eta = T) {
   progress::progress_bar$new(
     total = total,

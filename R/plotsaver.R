@@ -1,5 +1,5 @@
-#' @importFrom ggplot last_plot
-#' @importFrom ggplot ggsave
+#' @importFrom ggplot2 last_plot
+#' @importFrom ggplot2 ggsave
 #' @export plotsaver
 
 ## ---- plotsaver function ----

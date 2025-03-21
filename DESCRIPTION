@@ -9,7 +9,12 @@ License: What license is it under?
 Encoding: UTF-8
 LazyData: true
 Imports: 
-    data.table, 
+    data.table,
     ggplot2,
     MASS,
-    stringr
+    progress,
+    readr,
+    stringr,
+    sva,
+    UCSC.utils
+RoxygenNote: 7.3.2

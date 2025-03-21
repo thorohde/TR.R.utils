@@ -1,4 +1,4 @@
-#' @export plotsaver
+#' @export downloader
 
 ## ---- downloader function ----
 

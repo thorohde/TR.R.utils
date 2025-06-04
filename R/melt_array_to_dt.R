@@ -21,5 +21,5 @@ melt_array_to_dt <- \(data, row.name = "row",
   }
 
   output[[value.name]] <- base::as.vector(data)
-  data.table(data.frame(output))
+  return(data.table(data.frame(output)))
 }

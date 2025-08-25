@@ -2,8 +2,8 @@
 
 ## ---- empty_array function ----
 
-empty_array <- \(dnames, values = NA) {
-  return(base::array(data = values,
-                     dim = base::sapply(dnames, base::length),
+empty_array <- function(dnames, values = NA) {
+  return(array(data = values,
+                     dim = sapply(dnames, length),
                      dimnames = dnames))
 }

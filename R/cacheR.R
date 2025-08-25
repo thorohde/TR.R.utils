@@ -2,21 +2,19 @@
 
 ## ---- cacheR function ----
 
-cacheR <- \(.,
+cacheR <- function(.,
             fname,
             dir = file.path(getwd(), "cache"),
             import = T,
             verbose = F) {
 
-  if (!base::dir.exists(dir)) {
-    base::dir.create(dir, recursive = T, showWarnings = F)
-  }
+  dir.create(dir, recursive = T, showWarnings = F)
 
-  f <- base::file.path(dir, base::paste0(fname, ".rds"))
+  f <- file.path(dir, paste0(fname, ".rds"))
 
-  messages <- list(a = base::paste0("Importing '", fname, "'."),
-                   b = base::paste0("'", fname, "' exists. Skipping."),
-                   c = base::paste0("Computing and caching '", fname, "'..."))
+  messages <- list(a = paste0("Importing '", fname, "'."),
+                   b = paste0("'", fname, "' exists. Skipping."),
+                   c = paste0("Computing and caching '", fname, "'..."))
 
   if (file.exists(f)) {
     if (import) {
@@ -30,8 +28,8 @@ cacheR <- \(.,
 
   if (!file.exists(f)) {
     if (verbose) {message(messages$c)}
-    x <- base::eval(base::substitute(.), envir = parent.frame())
-    saveRDS(x, file = base::file.path(dir, base::paste0(fname, ".rds")))
+    x <- eval(substitute(.), envir = parent.frame())
+    saveRDS(x, file = file.path(dir, paste0(fname, ".rds")))
     return(x)
   }
 }

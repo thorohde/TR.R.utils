@@ -2,6 +2,4 @@
 
 ## ---- timepoint function ----
 
-timepoint <- \() {
-  return(base::format(base::Sys.time(), "%X"))
-  }
+timepoint <- function() {return(format(Sys.time(), "%X"))}

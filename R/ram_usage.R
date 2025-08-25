@@ -1,6 +1,6 @@
-#' @importFrom utils object.size
 #' @export ram_usage
 
-ram_usage <- \() {base::sort(
-  base::sapply(base::ls(envir = .GlobalEnv), 
-               \(.) {utils::object.size(get(.))}), decreasing = T)}
+ram_usage <- \() {
+  .d <- data.frame(object = ls(envir = .GlobalEnv))
+  .d$size <- map_dbl(.d$object, ~ utils::object.size(get(.x)))
+  .d[order(.d$size, decreasing = T),]}

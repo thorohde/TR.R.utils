@@ -2,6 +2,4 @@
 
 ## ---- l function ----
 
-l <- \(x) {
-  return(base::length(x))
-  }
+l <- function(.x) length(.x)

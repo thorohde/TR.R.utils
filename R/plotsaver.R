@@ -1,5 +1,3 @@
-#' @importFrom ggplot2 last_plot
-#' @importFrom ggplot2 ggsave
 #' @export plotsaver
 
 ## ---- plotsaver function ----
@@ -11,12 +9,14 @@ plotsaver <- \(.path,
                .plot = ggplot2::last_plot(),
                .dpi = 300,
                .fileformats = c("png", "pdf")) {
-  for (.ffmt in .fileformats) {
-    ggplot2::ggsave(filename = base::paste0(.filename, ".", .ffmt),
+
+  dir.create(.path, recursive = T, showWarnings = F)
+
+  purrr::walk(.fileformats, ~ 
+    ggplot2::ggsave(filename = paste0(.filename, ".", .x),
                     plot = .plot,
                     device = .ffmt,
                     path = .path,
                     width = .width,
-                    height = .height)
-  }
+                    height = .height))
 }

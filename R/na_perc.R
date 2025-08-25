@@ -2,7 +2,4 @@
 
 ## ---- na_perc function ----
 
-na_perc <- \(object) {
-  return(
-    base::round(base::sum(base::is.na(object)) / base::length(object), 5))
-  }
+na_perc <- function(object) {round(sum(is.na(object)) / length(object), 5)}

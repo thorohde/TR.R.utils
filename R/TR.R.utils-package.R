@@ -14,6 +14,7 @@
 #' @importFrom purrr map_dbl
 #' @importFrom readr read_lines
 #' @importFrom rstudioapi jobList
+#' @importFrom stats median
 #' @importFrom utils download.file
 #' @importFrom utils object.size
 ## usethis namespace: end

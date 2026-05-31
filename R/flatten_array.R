@@ -5,28 +5,23 @@ flatten_array <- function(x, dnames, value.name = "value") {
   stopifnot("Please provide an array!" = !is.null(dim(x)))
 
   if (is.null(dimnames(x))) {
-    dimnames(x) <- map(dim(x), seq_len)
+    dimnames(x) <- lapply(dim(x), seq_len)
   }
 
-  output <- expand.grid(dimnames(x), KEEP.OUT.ATTRS = F, stringsAsFactors = F)
-
-  output <- data.table::data.table(output)
-
-  output[[value.name]] <- as.vector(x)
-
-  output <- data.table::data.table(data.frame(output))
+  output <- data.table::as.data.table(x, value.name = value.name)
 
   if (!missing(dnames)) {
     given_dnames <- length(dnames)
     required_dnames <- length(dim(x))
 
     if (given_dnames != required_dnames) {
-      warning(paste(given_dnames, "dimnames given, but", required_dnames, "dimensions found!"))
+      warning(paste(given_dnames, "dimnames given, but",
+                    required_dnames, "dimensions found!"))
     }
 
-    data.table::setnames(output,
-                         old = paste0("Var", 1:length(dim(x)))[1:given_dnames],
-                         new = dnames)}
+    old_names <- paste0("V", 1:required_dnames)[1:given_dnames]
 
-return(output)
+    data.table::setnames(output, old = old_names, new = dnames[1:given_dnames])}
+
+  return(output)
 }
